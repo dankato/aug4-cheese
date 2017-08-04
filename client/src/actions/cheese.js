@@ -1,6 +1,6 @@
 export const fetchCheeses = () => {
   return dispatch => {
-    dispatch(fetchCheeseRequest());
+    dispatch(fetchCheesesRequest());
     setTimeout(() => {
       fetch('/api/cheeses')
         .then(response => response.json())
@@ -10,7 +10,7 @@ export const fetchCheeses = () => {
   };
 };
 
-const fetchCheeseRequest = () => ({
+const fetchCheesesRequest = () => ({
   type: 'FETCH_CHEESES_REQUEST'
 });
 
@@ -19,7 +19,7 @@ const fetchCheesesSuccess = cheeses => ({
   cheeses
 });
 
-const fetchCheeseError = () => ({
+const fetchCheesesError = () => ({
   type: 'FETCH_CHEESES_ERROR',
   error
 });
