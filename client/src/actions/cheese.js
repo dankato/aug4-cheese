@@ -16,7 +16,10 @@ const fetchCheeses = () => {
   return dispatch => {
     dispatch(fetchCheesesRequest());
     setTimeout(() => {
-      fetch('/api/cheeses')
+      fetch('/api/cheeses',
+      {method: "POST",
+        cheeses: types
+      })
         .then(response => response.json())
         .then(cheeses => dispatch(fetchCheesesSuccess(cheeses)))
         .catch(error => console.log(error));
