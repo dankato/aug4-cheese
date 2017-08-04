@@ -1,3 +1,6 @@
+heroku url:
+https://aug-4-cheese.herokuapp.com/ | https://git.heroku.com/aug-4-cheese.git
+
 # Thinkful Full Stack Template
 
 A template for developing and deploying full stack JavaScript apps.
