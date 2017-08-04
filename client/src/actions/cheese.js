@@ -5,7 +5,7 @@ export const fetchCheeses = () => {
       fetch('/api/cheeses')
         .then(response => response.json())
         .then(cheeses => dispatch(fetchCheesesSuccess(cheeses)))
-        .catch(err => console.log(err));
+        .catch(error => console.log(error));
     }, 5000);
   };
 };
@@ -19,7 +19,7 @@ const fetchCheesesSuccess = cheeses => ({
   cheeses
 });
 
-const fetchCheesesError = () => ({
+const fetchCheesesError = (error) => ({
   type: 'FETCH_CHEESES_ERROR',
   error
 });

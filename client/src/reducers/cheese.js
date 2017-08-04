@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   fetchCheesesRequest,
   fetchCheesesSuccess,
@@ -11,26 +11,25 @@ const initialState = {
   error: null
 };
 
-export default (cheeseReducer = (state, action) => {
+export const cheeseReducer = (state=initialState, action) => {
   if (action.type === fetchCheesesRequest) {
+    return Object.assign({}, state, {
+      loading: true
+    })
   }
   if (action.type === fetchCheesesSuccess) {
+    return Object.assign({}, state, {
+      cheeses: action.cheeses,
+      loading: false,
+      error: null
+
+    })    
   }
   if (action.type === fetchCheesesError) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error
+    })       
   }
   return state;
-});
-
-// const reducer = (state=initialState, action) => {
-//     if (action.type === actions.CHANGE_FOO) {
-//         return Object.assign({}, state, {
-//             foo: 'baz'
-//         });
-//     }
-//     else if (action.type === actions.UNSET_FOO) {
-//         return Object.assign({}, state, {
-//             foo: null
-//         });
-//     }
-//     return state;
-// }
+};
