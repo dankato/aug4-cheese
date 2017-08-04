@@ -4,27 +4,14 @@ const express = require('express');
 const app = express();
 
 // API endpoints go here!
-app.get('/api/cheeses', (req, res) => {
-  return res.json([
-      'Bath Blue',
-      'Barkham Blue',
-      'Buxton Blue',
-      'Cheshire Blue',
-      'Devon Blue',
-      'Dorset Blue Vinney',
-      'Dovedale',
-      'Exmoor Blue',
-      'Harbourne Blue',
-      'Lanark Blue',
-      'Lymeswold',
-      'Oxford Blue',
-      'Shropshire Blue',
-      'Stichelton',
-      'Stilton',
-      'Blue Wensleydale',
-      'Yorkshire Blue'
-    ]);
+app.get('/api/fetch-cheeses', (req, res) => {
+  return res.json({
+    types: ['Stilton', 'Blue Wensleydale', 'Yorkshire Blue']
+  });
 });
+
+app.post('/api/cheeses');
+app.put('/api/cheeses/id');
 
 // Serve the built client
 app.use(express.static(path.resolve(__dirname, '../client/build')));
@@ -37,23 +24,25 @@ app.get(/^(?!\/api(\/|$))/, (req, res) => {
 });
 
 let server;
-function runServer(port=3001) {
+function runServer(port = 3001) {
   return new Promise((resolve, reject) => {
-      server = app.listen(port, () => {
-          resolve();
-        }).on('error', reject);
-    });
+    server = app
+      .listen(port, () => {
+        resolve();
+      })
+      .on('error', reject);
+  });
 }
 
 function closeServer() {
   return new Promise((resolve, reject) => {
-      server.close(err => {
-          if (err) {
-              return reject(err);
-            }
-          resolve();
-        });
+    server.close(err => {
+      if (err) {
+        return reject(err);
+      }
+      resolve();
     });
+  });
 }
 
 if (require.main === module) {
@@ -61,5 +50,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-  app, runServer, closeServer
+  app,
+  runServer,
+  closeServer
 };

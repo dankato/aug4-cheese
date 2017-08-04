@@ -10,11 +10,12 @@ import {Provider} from 'react-redux';
 
 const store = createStore(cheeseReducer, applyMiddleware(thunk),  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-const cheeses=[
+const cheeses={
+  types:[
     "Bath Blue",
     "Barkham Blue",
     "Buxton Blue"
-];
+]};
 
 ReactDOM.render(
 
