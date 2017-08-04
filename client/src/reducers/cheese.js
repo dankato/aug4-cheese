@@ -11,7 +11,7 @@ const initialState = {
   error: null
 };
 
-export const cheeseReducer = (state=initialState, action) => {
+const cheeseReducer = (state=initialState, action) => {
   if (action.type === fetchCheesesRequest) {
     return Object.assign({}, state, {
       loading: true
@@ -33,3 +33,5 @@ export const cheeseReducer = (state=initialState, action) => {
   }
   return state;
 };
+
+export default cheeseReducer;
