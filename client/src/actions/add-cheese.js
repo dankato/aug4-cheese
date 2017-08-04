@@ -12,9 +12,9 @@ const addCheesesError = error => ({
   error
 });
 
-const addCheeses = () => {
+const addCheese = () => {
   return dispatch => {
-    dispatch(addCheeses());
+    dispatch(addCheese());
     setTimeout(() => {
       fetch('api/fetch-cheeses')
         .then(response => response.json())
@@ -24,4 +24,4 @@ const addCheeses = () => {
   };
 };
 
-export default { addCheeses };
+export default { addCheese };
